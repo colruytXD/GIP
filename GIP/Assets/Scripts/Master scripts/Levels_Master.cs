@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Levels_Master : MonoBehaviour {
 
@@ -12,17 +13,21 @@ public class Levels_Master : MonoBehaviour {
 
     public void CallEventGoToLevel(int currentLevel, int wantedLevel)
     {
+        Debug.Log("Loading level: " + wantedLevel);
         EventGoToLevel(currentLevel, wantedLevel);
     }
 
-    public void CallEventGoToNextLevel(int currentLevel, int wantedLevel)
+    public void CallEventGoToNextLevel(int currentLevel)
     {
-        EventGoToNextLevel(currentLevel, wantedLevel);
+        Debug.Log("Going to the next level...");
+        CallEventGoToLevel(currentLevel, currentLevel + 1);
     }
 
-    public void CallEventRestartLevel(int currentLevel, int wantedLevel)
+    public void CallEventRestartLevel()
     {
-        EventRestartLevel(currentLevel, wantedLevel);
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("Restarting level " + currentLevel);
+        CallEventGoToLevel(currentLevel, currentLevel);
     }
 
 
