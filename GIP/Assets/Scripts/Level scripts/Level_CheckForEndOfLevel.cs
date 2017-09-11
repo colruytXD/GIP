@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class Level_CheckForEndOfLevel : MonoBehaviour {
 
     [SerializeField]
-    private Levels_Master levelMaster;
+    private GameManager_Master gm;
 
     private void OnTriggerEnter(Collider other)
     {
-        levelMaster.CallEventGoToNextLevel(SceneManager.sceneCountInBuildSettings);
+        gm.CallEventLevelCompleted();
     }
 }

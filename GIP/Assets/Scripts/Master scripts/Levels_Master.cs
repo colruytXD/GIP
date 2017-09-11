@@ -20,7 +20,7 @@ public class Levels_Master : MonoBehaviour {
     public void CallEventGoToNextLevel(int currentLevel)
     {
         Debug.Log("Going to the next level...");
-        CallEventGoToLevel(currentLevel, currentLevel + 1);
+        EventGoToNextLevel(currentLevel, currentLevel + 1);
     }
 
     public void CallEventRestartLevel()

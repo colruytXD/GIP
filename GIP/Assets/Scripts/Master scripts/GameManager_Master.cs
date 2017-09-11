@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class GameManager_Master : MonoBehaviour {
 
-    private Levels_Master levelMaster;
-
     public delegate void GeneralEventHandler();
 
     public event GeneralEventHandler EventLevelFailed;
+    public event GeneralEventHandler EventLevelCompleted;
 
     public void CallEventLevelFailed()
     {
-        if(EventLevelFailed != null)
-            EventLevelFailed();
+        EventLevelFailed();
+    }
 
-        levelMaster.CallEventRestartLevel();
+    public void CallEventLevelCompleted()
+    {
+        EventLevelCompleted();
     }
 
     private void Start()
     {
-        levelMaster = GetComponent<Levels_Master>();
     }
 }

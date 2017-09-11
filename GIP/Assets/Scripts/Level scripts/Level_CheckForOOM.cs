@@ -9,6 +9,7 @@ public class Level_CheckForOOM : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other + " is OOM");
         if(other.tag == "Player")
         {
             gm.CallEventLevelFailed();
