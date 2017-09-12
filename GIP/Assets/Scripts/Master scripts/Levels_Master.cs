@@ -20,7 +20,16 @@ public class Levels_Master : MonoBehaviour {
     public void CallEventGoToNextLevel(int currentLevel)
     {
         Debug.Log("Going to the next level...");
-        EventGoToNextLevel(currentLevel, currentLevel + 1);
+
+        if(currentLevel == 0)
+        {
+            currentLevel = SceneManager.GetActiveScene().buildIndex;
+        }
+
+        if(EventGoToNextLevel != null)
+            EventGoToNextLevel(currentLevel, currentLevel + 1);
+
+        EventGoToLevel(currentLevel, currentLevel + 1);
     }
 
     public void CallEventRestartLevel()
