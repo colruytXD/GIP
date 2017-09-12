@@ -9,13 +9,19 @@ public class UI_ToggleNextLevelPanel : MonoBehaviour {
 
     private GameManager_Master gm;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnEnable()
+    {
+        gm = GetComponent<GameManager_Master>();
+        gm.EventLevelCompleted += TogglePanel;
+    }
+
+    private void OnDisable()
+    {
+        gm.EventLevelCompleted -= TogglePanel;
+    }
+
+    void TogglePanel()
+    {
+        pnlNextLevel.SetActive(!pnlNextLevel.activeSelf);
+    }
 }
